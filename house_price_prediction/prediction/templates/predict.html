@@ -1,0 +1,82 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+  
+  {% block content %}
+  <style>
+    body {
+        position: relative;
+        background-image: url("{% static 'images/house.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        overflow: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: inherit;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: blur(10px);
+        opacity: 0.8;
+        z-index: -1;
+    }
+
+    .content-container {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 8px;
+        z-index: 1;
+    }
+</style>
+  
+    <div class="w-full max-w-xs mx-auto mt-22">
+        <form method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="Area">
+                    {{ form.Area.label }}
+                </label>
+                {{ form.Area }}
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="Room">
+                    {{ form.Room.label }}
+                </label>
+                {{ form.Room }}
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="Lon">
+                    {{ form.Lon.label }}
+                </label>
+                {{ form.Lon }}
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="Lat">
+                    {{ form.Lat.label }}
+                </label>
+                {{ form.Lat }}
+            </div>
+            <div class="flex items-center justify-between">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    Predict Price
+                </button>
+            </div>
+        </form>
+        <p class="text-center text-gray-500 text-xs">
+            &copy;All rights reserved.
+        </p>
+    </div>
+    {% endblock content %}
+    
+

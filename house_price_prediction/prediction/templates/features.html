@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<style>
+    body {
+        background-color: rgb(155, 237, 240); /* Blue background color */
+    }
+
+    .content-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        background-color: #ceeff7; /* Light gray background */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .content-container {
+        flex: 1;
+        margin-right: 20px; /* Space between text and image */
+        background-color: rgba(249, 229, 195, 0.9); /* Semi-transparent white background */
+        padding: 20px 10px; /* Adjust padding as needed */
+        border-radius: 8px;
+    }
+
+    .image-container {
+        flex: 0 0 40%; /* Adjust the width of the image container */
+        max-width: 40%;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 400px;
+        border-radius: 8px;
+        
+    }
+</style>
+<div class="container mx-auto py-8 text-black">
+    <div class="content-wrapper">
+        <div class="content-container">
+           <h2 class="text-2xl font-bold mb-2">Features</h2>
+            <ul class="list-disc pl-6 mb-4">
+                <li>Input features include:
+                    <ul class="list-disc pl-6">
+                        <li>Area of the house</li>
+                        <li>Number of rooms</li>
+                        <li>Longitude and Latitude</li>
+                    </ul>
+                </li>
+                
+            </ul>
+            The model is trained on a Amsterdam dataset. It leverages a Random Forest Regressor algorithm to learn patterns from the data and make predictions.
+<br></br>
+            <h2 class="text-2xl font-bold mb-2">Model Performance</h2>
+            <p class="mb-4">Our model achieves high accuracy with an R-squared score of over 0.80, indicating a good fit to the data.</p>
+
+            
+            <a href="{% url 'predict' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Start Predicting
+            </a>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/house.jpg' %}" alt="House Image">
+            </div>
+            </div>
+            </div>
+    </div>
+    
+{% endblock content %}
+    

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background-color: rgb(155, 237, 240); /* Blue background color */
+    }
+
+    .content-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        background-color: #ceeff7; /* Light gray background */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .content-container {
+        flex: 1;
+        margin-right: 20px; /* Space between text and image */
+        background-color: rgba(249, 229, 195, 0.9); /* Semi-transparent white background */
+        padding: 20px 10px; /* Adjust padding as needed */
+        border-radius: 8px;
+    }
+
+    .image-container {
+        flex: 0 0 40%; /* Adjust the width of the image container */
+        max-width: 40%;
+    }
+
+    .image-container img {
+        width: 100%;
+        border-radius: 8px;
+    }
+</style>
+
+<div class="container mx-auto py-8 text-black">
+    <div class="content-wrapper">
+        <div class="content-container">
+            <h1 class="text-3xl font-bold mb-4">House Price Prediction</h1>
+            <p class="mb-4">Welcome to the House Price Prediction application. This project uses machine learning to predict house prices based on custom user inputs.</p>
+
+            <h2 class="text-2xl font-bold mb-2">How it Works</h2>
+            <p class="mb-4">The user will input the number of rooms,area of house,Longitude and Latitude of house to predict the price of house. </p>
+
+
+            <a href="{% url 'predict' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Start Predicting
+            </a>
+        </div>
+        <div class="image-container">
+            <img src="{% static 'images/house.jpg' %}" alt="House Image">
+        </div>
+    </div>
+</div>
+{% endblock content %}
